@@ -6,7 +6,7 @@
 
 ### Usage
 
-At beginning of your lambda function::
+At beginning of your lambda function:
 
 ```javascript
 require("log4-aws-lambda");
@@ -14,5 +14,5 @@ require("log4-aws-lambda");
 
 It will have no effect when run in non AWS lambda environment (no logs will be output)
 
-[circleci-image]: https://img.shields.io/circleci/project/github/medikoo/log4.svg
-[circleci-url]: https://circleci.com/gh/medikoo/log4
+[circleci-image]: https://img.shields.io/circleci/project/github/medikoo/log4-aws-lambda.svg
+[circleci-url]: https://circleci.com/gh/medikoo/log4-aws-lambda
