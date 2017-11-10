@@ -1,6 +1,6 @@
 "use strict";
 
-if (!process.env.AWS_LAMBDA_LOG_STREAM_NAME) return; // Do not proceed in non AWS lambda env
+if (!process.env.AWS_EXECUTION_ENV) return; // Do not proceed in non AWS lambda env
 
 var format          = require("util").format
   , logger          = require("log4")
