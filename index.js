@@ -1,34 +1,39 @@
 "use strict";
 
-if (!process.env.AWS_EXECUTION_ENV) return; // Do not proceed in non AWS lambda env
+const d               = require("d")
+    , rootLogger      = require("log4")
+    , emitter         = require("log4/writer-utils/emitter")
+    , registerMaster  = require("log4/writer-utils/register-master")
+    , setupVisibility = require("log4/writer-utils/setup-visibility")
+    , formatMessage   = require("log4-nodejs/utils/format-message")
+    , levelPrefixes   = require("log4-nodejs/utils/level-prefixes");
 
-var format          = require("util").format
-  , logger          = require("log4")
-  , setupVisibility = require("log4/setup-visibility");
+const setupPrefixes = levelLogger => {
+	levelLogger.levelMessagePrefix = levelPrefixes[levelLogger.level];
+	Object.defineProperty(
+		levelLogger, "namespaceMessagePrefix", d.gs(function () { return this.namespace; })
+	);
+};
 
-var conf = Object.create(null);
+module.exports = () => {
+	// Ensure it's the only log4 writer initialzed in a process
+	registerMaster();
 
-// Setup visibility
-// Resolve from LOG_* env vars
-logger.predefinedLevels.forEach(function (level) {
-	var varName = "LOG_" + level.toUpperCase();
-	if (process.env[varName]) conf[level] = process.env[varName].split(",");
-});
-// Eventually support as fallback DEBUG env var
-if (!conf.debug && process.env.DEBUG) conf.debug = process.env.DEBUG.split(",");
-// Do not show debug level logs by default
-if (!conf.debug) conf.debug = [];
-conf.debug.unshift("-*");
-setupVisibility(conf);
+	// Read logs visiblity settings from env variables
+	setupVisibility(
+		process.env.LOG_LEVEL, (process.env.LOG_DEBUG || process.env.DEBUG || "").split(",")
+	);
 
-// Log
-logger.emitter.on("log", function (event) {
-	var currentLogger = event.logger;
-	var prefix = "[" + currentLogger.level + "]";
-	if (currentLogger.ns) prefix += "[" + currentLogger.ns + "]";
-	prefix += " ";
-	event.messagePrefix = prefix;
-	if (module.exports.prefixDecorator) prefix = module.exports.prefixDecorator(prefix);
-	event.messageText = format.apply(null, event.messageTokens);
-	console.log(prefix + event.messageText);
-});
+	// Resolve level and namespace log message prefixes
+	// - for already initialized loggers
+	rootLogger.getAllInitializedLevels().forEach(setupPrefixes);
+	// - for loggers to be initialized
+	emitter.on("init", event => { if (!event.logger.namespace) setupPrefixes(event.logger); });
+
+	// Write logs to stderr
+	emitter.on("log", event => {
+		if (!event.logger.isEnabled) return;
+		formatMessage(event);
+		console.error(event.message);
+	});
+};
