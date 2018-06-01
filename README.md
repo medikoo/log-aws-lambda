@@ -8,7 +8,7 @@
 
 ## [log4](https://github.com/medikoo/log4/) log writer for [AWS Lambda](https://aws.amazon.com/lambda/) environment
 
-*   Printf-like message formatting. See: [Output message formatting](https://github.com/medikoo/log4#output-message-formatting) for details
+*   Printf-like message formatting, for details see: [Output message formatting](https://github.com/medikoo/log4#output-message-formatting)
 *   Configure log level visbility threshold through [`LOG_LEVEL`](https://github.com/medikoo/log4#log_level) env variable (defaults to `warning`)
 *   Extra debug output can be controlled via [`LOG_DEBUG`](https://github.com/medikoo/log4#log_debug) env variable (fallbacks to `DEBUG` if provided)
 *   Object inspection depth defaults to `4`, but can be overriden via `LOG_INSPECT_DEPTH` (fallbacks to `DEBUG_DEPTH` if provided)
