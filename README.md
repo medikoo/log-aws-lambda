@@ -28,7 +28,7 @@ require("log4-aws-lambda")();
 
 [nix-build-image]: https://semaphoreci.com/api/v1/medikoo-org/log4-aws-lambda/branches/master/shields_badge.svg
 [nix-build-url]: https://semaphoreci.com/medikoo-org/log4-aws-lambda
-[win-build-image]: https://ci.appveyor.com/api/projects/status/?svg=true
+[win-build-image]: https://ci.appveyor.com/api/projects/status/fuyxafy6dvhi11s9?svg=true
 [win-build-url]: https://ci.appveyor.com/project/medikoo/log4-aws-lambda
 [cov-image]: https://img.shields.io/codecov/c/github/medikoo/log4-aws-lambda.svg
 [cov-url]: https://codecov.io/gh/medikoo/log4-aws-lambda
