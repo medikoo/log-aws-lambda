@@ -13,10 +13,7 @@
     "bunyan",
     "winston"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/medikoo/log4-aws-lambda.git"
-  },
+  "repository": "medikoo/log4-aws-lambda.git",
   "dependencies": {
     "d": "1",
     "log4-nodejs": "2"
