@@ -5,7 +5,7 @@ const d               = require("d")
     , emitter         = require("log4/writer-utils/emitter")
     , registerMaster  = require("log4/writer-utils/register-master")
     , setupVisibility = require("log4/writer-utils/setup-visibility")
-    , formatMessage   = require("log4-nodejs/utils/format-message")
+    , formatMessage   = require("log4-nodejs/utils/format-event-message")
     , levelPrefixes   = require("log4-nodejs/utils/level-prefixes");
 
 const setupPrefixes = levelLogger => {
