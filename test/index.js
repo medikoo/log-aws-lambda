@@ -4,16 +4,23 @@ const test            = require("tape")
     , requireUncached = require("cjs-module/require-uncached")
     , overrideEnv     = require("process-utils/override-env");
 
-test("log4-aws-lambda", t => {
-	const { log, initializeWriter } = overrideEnv(() =>
-		requireUncached(
+const resolveUncached = () => {
+	const { restoreEnv } = overrideEnv();
+	try {
+		return requireUncached(
 			[
 				require.resolve("log4"), require.resolve("log4/writer-utils/emitter"),
 				require.resolve("log4/writer-utils/register-master"),
 				require.resolve("log4/writer-utils/setup-visibility"), require.resolve("../")
 			],
 			() => ({ log: require("log4"), initializeWriter: require("../") })
-		));
+		);
+	}
+	finally { restoreEnv(); }
+};
+
+test("log4-aws-lambda", t => {
+	const { log, initializeWriter } = resolveUncached();
 	initializeWriter();
 	const originalWrite = console.error;
 	let isInvoked = false;

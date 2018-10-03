@@ -24,7 +24,7 @@
     "eslint-config-medikoo": "^1.35",
     "istanbul": "^0.4.5",
     "log4": "3",
-    "process-utils": "^1.1",
+    "process-utils": "^2.0.1",
     "tape": "^4.9",
     "tape-index": "2"
   },
