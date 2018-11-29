@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "cjs-module": "^1.4",
-    "eslint": "5.6.1",
+    "eslint": "^5.6.1",
     "eslint-config-medikoo": "^1.43",
     "istanbul": "^0.4.5",
     "log4": "^3.1",
