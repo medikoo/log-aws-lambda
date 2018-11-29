@@ -1,35 +1,34 @@
 {
-  "name": "log4-aws-lambda",
+  "name": "log-aws-lambda",
   "version": "2.0.1",
-  "description": "AWS Lambda log generator for log4 engine",
+  "description": "AWS Lambda log generator for log engine",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
     "aws",
     "lambda",
     "log",
-    "log4",
     "logger",
     "debug",
     "bunyan",
     "winston"
   ],
-  "repository": "medikoo/log4-aws-lambda.git",
+  "repository": "medikoo/log-aws-lambda.git",
   "dependencies": {
     "d": "1",
-    "log4-nodejs": "^3.1.1"
+    "log-node": "^3.1.1"
   },
   "devDependencies": {
     "cjs-module": "^1.4",
     "eslint": "^5.6.1",
     "eslint-config-medikoo": "^1.43",
     "istanbul": "^0.4.5",
-    "log4": "^3.1",
+    "log": "^3.1",
     "process-utils": "^2.0.1",
     "tape": "^4.9.1",
     "tape-index": "2"
   },
   "peerDependencies": {
-    "log4": "^3.1"
+    "log": "^3.1"
   },
   "eslintConfig": {
     "extends": "medikoo",

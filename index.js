@@ -1,12 +1,12 @@
 "use strict";
 
 const d               = require("d")
-    , rootLogger      = require("log4")
-    , emitter         = require("log4/writer-utils/emitter")
-    , registerMaster  = require("log4/writer-utils/register-master")
-    , setupVisibility = require("log4/writer-utils/setup-visibility")
-    , formatMessage   = require("log4-nodejs/utils/format-event-message")
-    , levelPrefixes   = require("log4-nodejs/utils/level-prefixes");
+    , rootLogger      = require("log")
+    , emitter         = require("log/writer-utils/emitter")
+    , registerMaster  = require("log/writer-utils/register-master")
+    , setupVisibility = require("log/writer-utils/setup-visibility")
+    , formatMessage   = require("log-node/utils/format-event-message")
+    , levelPrefixes   = require("log-node/utils/level-prefixes");
 
 const setupPrefixes = levelLogger => {
 	levelLogger.levelMessagePrefix = levelPrefixes[levelLogger.level];
@@ -16,7 +16,7 @@ const setupPrefixes = levelLogger => {
 };
 
 module.exports = () => {
-	// Ensure it's the only log4 writer initialzed in a process
+	// Ensure it's the only log writer initialzed in a process
 	registerMaster();
 
 	// Read logs visiblity settings from env variables

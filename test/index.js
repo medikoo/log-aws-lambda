@@ -9,17 +9,17 @@ const resolveUncached = () => {
 	try {
 		return requireUncached(
 			[
-				require.resolve("log4"), require.resolve("log4/writer-utils/emitter"),
-				require.resolve("log4/writer-utils/register-master"),
-				require.resolve("log4/writer-utils/setup-visibility"), require.resolve("../")
+				require.resolve("log"), require.resolve("log/writer-utils/emitter"),
+				require.resolve("log/writer-utils/register-master"),
+				require.resolve("log/writer-utils/setup-visibility"), require.resolve("../")
 			],
-			() => ({ log: require("log4"), initializeWriter: require("../") })
+			() => ({ log: require("log"), initializeWriter: require("../") })
 		);
 	}
 	finally { restoreEnv(); }
 };
 
-test("log4-aws-lambda", t => {
+test("log-aws-lambda", t => {
 	const { log, initializeWriter } = resolveUncached();
 	initializeWriter();
 	const originalWrite = console.error;
