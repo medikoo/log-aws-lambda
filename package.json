@@ -1,50 +1,50 @@
 {
-  "name": "log-aws-lambda",
-  "version": "2.1.0",
-  "description": "AWS Lambda log generator for log engine",
-  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
-  "keywords": [
-    "aws",
-    "lambda",
-    "log",
-    "logger",
-    "debug",
-    "bunyan",
-    "winston"
-  ],
-  "repository": "medikoo/log-aws-lambda.git",
-  "dependencies": {
-    "d": "1",
-    "log-node": "^3.1.1"
-  },
-  "devDependencies": {
-    "cjs-module": "^1.4",
-    "eslint": "^5.6.1",
-    "eslint-config-medikoo": "^1.43",
-    "istanbul": "^0.4.5",
-    "log": "^3.1",
-    "process-utils": "^2.0.1",
-    "tape": "^4.9.1",
-    "tape-index": "2"
-  },
-  "peerDependencies": {
-    "log": "^3.1"
-  },
-  "eslintConfig": {
-    "extends": "medikoo",
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "no-console": "off"
-    }
-  },
-  "scripts": {
-    "coverage": "tape-index && istanbul cover test.index.js",
-    "check-coverage": "npm run coverage && istanbul check-coverage --statements 100 --function 100 --branches 100 --lines 100",
-    "lint": "eslint --ignore-path=.gitignore .",
-    "test": "tape-index && node test.index.js"
-  },
-  "license": "ISC"
+	"name": "log-aws-lambda",
+	"version": "2.1.0",
+	"description": "AWS Lambda log generator for log engine",
+	"author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
+	"keywords": [
+		"aws",
+		"lambda",
+		"log",
+		"logger",
+		"debug",
+		"bunyan",
+		"winston"
+	],
+	"repository": "medikoo/log-aws-lambda.git",
+	"dependencies": {
+		"d": "1",
+		"log-node": "^3.1.1"
+	},
+	"devDependencies": {
+		"cjs-module": "^1.4",
+		"eslint": "^5.6.1",
+		"eslint-config-medikoo": "^1.43",
+		"istanbul": "^0.4.5",
+		"log": "^3.1",
+		"process-utils": "^2.0.1",
+		"tape": "^4.9.1",
+		"tape-index": "2"
+	},
+	"peerDependencies": {
+		"log": "^3.1"
+	},
+	"eslintConfig": {
+		"extends": "medikoo",
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"rules": {
+			"no-console": "off"
+		}
+	},
+	"scripts": {
+		"coverage": "tape-index && istanbul cover test.index.js",
+		"check-coverage": "npm run coverage && istanbul check-coverage --statements 100 --function 100 --branches 100 --lines 100",
+		"lint": "eslint --ignore-path=.gitignore .",
+		"test": "tape-index && node test.index.js"
+	},
+	"license": "ISC"
 }
