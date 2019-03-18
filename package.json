@@ -18,11 +18,11 @@
 		"log-node": "^3.2.1"
 	},
 	"devDependencies": {
-		"cjs-module": "^1.5.0",
 		"eslint": "^5.15.2",
 		"eslint-config-medikoo": "^1.44.0",
 		"istanbul": "^0.4.5",
 		"log": "^3.2.0",
+		"ncjsm": "^2.0.1",
 		"process-utils": "^2.0.1",
 		"tape": "^4.10.1",
 		"tape-index": "^2.0.0"
