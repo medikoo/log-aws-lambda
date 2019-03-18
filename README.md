@@ -22,6 +22,8 @@ At beginning of main module of your program invoke:
 require("log-aws-lambda")();
 ```
 
+_Note: Value of [`LOG_TIME`](https://github.com/medikoo/log/#log_time) env var is ignored, as AWS logs by default are accompanied with absolute timestamps_
+
 ### Tests
 
     $ npm test
