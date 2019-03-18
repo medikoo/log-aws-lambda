@@ -14,18 +14,18 @@
 	],
 	"repository": "medikoo/log-aws-lambda.git",
 	"dependencies": {
-		"d": "1",
-		"log-node": "^3.1.1"
+		"d": "^1.0.0",
+		"log-node": "^3.2.1"
 	},
 	"devDependencies": {
-		"cjs-module": "^1.4",
-		"eslint": "^5.6.1",
-		"eslint-config-medikoo": "^1.43",
+		"cjs-module": "^1.5.0",
+		"eslint": "^5.15.2",
+		"eslint-config-medikoo": "^1.44.0",
 		"istanbul": "^0.4.5",
-		"log": "^3.1",
+		"log": "^3.2.0",
 		"process-utils": "^2.0.1",
-		"tape": "^4.9.1",
-		"tape-index": "2"
+		"tape": "^4.10.1",
+		"tape-index": "^2.0.0"
 	},
 	"peerDependencies": {
 		"log": "^3.1"
