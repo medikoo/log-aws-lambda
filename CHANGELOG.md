@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [4.0.0](https://github.com/medikoo/log-aws-lambda/compare/v3.0.0...v4.0.0) (2019-03-19)
+
+### Features
+
+-   upgrade to log v5 ([de6a78f](https://github.com/medikoo/log-aws-lambda/commit/de6a78f))
+-   upgrade to log-node v5 ([b5d05d5](https://github.com/medikoo/log-aws-lambda/commit/b5d05d5))
+
+### BREAKING CHANGES
+
+-   Switch from log v4 to v5
+
 # [3.0.0](https://github.com/medikoo/log-aws-lambda/compare/v2.1.0...v3.0.0) (2019-03-18)
 
 ### Features
