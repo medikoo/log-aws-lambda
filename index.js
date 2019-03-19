@@ -5,8 +5,8 @@ const d               = require("d")
     , emitter         = require("log/lib/emitter")
     , registerMaster  = require("log/lib/register-master")
     , setupVisibility = require("log/lib/setup-visibility")
-    , formatMessage   = require("log-node/utils/format-event-message")
-    , levelPrefixes   = require("log-node/utils/level-prefixes");
+    , formatMessage   = require("log-node/lib/format-event-message")
+    , levelPrefixes   = require("log-node/lib/level-prefixes");
 
 const setupPrefixes = levelLogger => {
 	levelLogger.levelMessagePrefix = levelPrefixes[levelLogger.level];

@@ -15,7 +15,7 @@
 	"repository": "medikoo/log-aws-lambda.git",
 	"dependencies": {
 		"d": "^1.0.0",
-		"log-node": "^4.0.0"
+		"log-node": "^5.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^5.15.3",
