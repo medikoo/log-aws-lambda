@@ -1,39 +1,15 @@
 "use strict";
 
-const d               = require("d")
-    , rootLogger      = require("log")
-    , emitter         = require("log/lib/emitter")
-    , registerMaster  = require("log/lib/register-master")
-    , setupVisibility = require("log/lib/setup-visibility")
-    , formatMessage   = require("log-node/lib/format-event-message")
-    , levelPrefixes   = require("log-node/lib/level-prefixes");
+const formatParts  = require("sprintf-kit/format-parts")
+    , LogWriter    = require("log/lib/writer")
+    , resolveParts = require("log-node/lib/resolve-format-parts");
 
-const setupPrefixes = levelLogger => {
-	levelLogger.levelMessagePrefix = levelPrefixes[levelLogger.level];
-	Object.defineProperty(
-		levelLogger, "namespaceMessagePrefix", d.gs(function () { return this.namespace; })
-	);
-};
+class AwsLambdaLogWriter extends LogWriter {
+	constructor(options = {}) { super(process.env, options); }
+	resolveMessageContent(event) {
+		event.messageContent = formatParts(resolveParts(...event.messageTokens));
+	}
+	writeMessage(event) { console.error(event.message); }
+}
 
-module.exports = () => {
-	// Ensure it's the only log writer initialzed in a process
-	registerMaster();
-
-	// Read logs visiblity settings from env variables
-	setupVisibility(
-		process.env.LOG_LEVEL, (process.env.LOG_DEBUG || process.env.DEBUG || "").split(",")
-	);
-
-	// Resolve level and namespace log message prefixes
-	// - for already initialized loggers
-	rootLogger.getAllInitializedLevels().forEach(setupPrefixes);
-	// - for loggers to be initialized
-	emitter.on("init", event => { if (!event.logger.namespace) setupPrefixes(event.logger); });
-
-	// Write logs to stderr
-	emitter.on("log", event => {
-		if (!event.logger.isEnabled) return;
-		formatMessage(event);
-		console.error(event.message);
-	});
-};
+module.exports = (options = {}) => new AwsLambdaLogWriter(options);
