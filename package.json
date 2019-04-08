@@ -18,7 +18,7 @@
 		"log-node": "^5.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^5.15.3",
+		"eslint": "^5.16.0",
 		"eslint-config-medikoo": "^2.1.1",
 		"essentials": "^1.0.0",
 		"git-list-updated": "^1.1.2",
