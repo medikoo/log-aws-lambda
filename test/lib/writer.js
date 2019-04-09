@@ -10,21 +10,25 @@ const resolveUncached = () => {
 		return requireUncached(
 			[
 				require.resolve("log"), require.resolve("log/lib/private/logger-prototype"),
-				require.resolve("log/lib/writer"), require.resolve("log/lib/emitter"),
-				require.resolve("log/lib/register-master"),
-				require.resolve("log/lib/setup-visibility"), require.resolve("../"),
-				require.resolve("../lib/writer")
+				require.resolve("log/lib/emitter"), require.resolve("log/lib/register-master"),
+				require.resolve("log/lib/writer"), require.resolve("log/lib/setup-visibility"),
+				require.resolve("../../lib/writer")
 			],
-			() => ({ log: require("log"), initializeWriter: require("../") })
+			() => {
+				const LogWriter = require("../../lib/writer");
+				return { log: require("log"), initializeWriter: () => new LogWriter() };
+			}
 		);
+	} finally {
+		restoreEnv();
 	}
-	finally { restoreEnv(); }
 };
 
 test("log-aws-lambda", t => {
 	const { log, initializeWriter } = resolveUncached();
 	initializeWriter();
 	const originalWrite = console.error;
+	let isInvoked = false;
 	console.error = string => {
 		t.equal(
 			string,
@@ -33,8 +37,12 @@ test("log-aws-lambda", t => {
 			} foo bar`,
 			"Should write logs for enabled loggers to stderr"
 		);
-		console.error = originalWrite;
-		t.end();
+		isInvoked = true;
 	};
+	log("not enabled");
+	t.equal(isInvoked, false, "Should not write logs of disabled loggers");
 	log.error.get("elo")("foo bar");
+	t.equal(isInvoked, true, "Should write logs immediately");
+	console.error = originalWrite;
+	t.end();
 });
