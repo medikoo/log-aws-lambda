@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [4.2.0](https://github.com/medikoo/log-aws-lambda/compare/v4.1.1...v4.2.0) (2019-04-09)
+
+### Features
+
+-   seclude AwsLambdaLogWriter ([b6e64c0](https://github.com/medikoo/log-aws-lambda/commit/b6e64c0))
+
 ## [4.1.1](https://github.com/medikoo/log-aws-lambda/compare/v4.1.0...v4.1.1) (2019-04-08)
 
 # [4.1.0](https://github.com/medikoo/log-aws-lambda/compare/v4.0.0...v4.1.0) (2019-04-08)
