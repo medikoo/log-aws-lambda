@@ -1,6 +1,6 @@
 {
 	"name": "log-aws-lambda",
-	"version": "4.2.0",
+	"version": "5.0.0",
 	"description": "AWS Lambda log generator for log engine",
 	"author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
 	"keywords": [
