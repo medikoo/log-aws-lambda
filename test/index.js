@@ -10,8 +10,8 @@ const resolveUncached = () => {
 		return requireUncached(
 			[
 				require.resolve("log"), require.resolve("log/lib/private/logger-prototype"),
-				require.resolve("log/lib/writer"), require.resolve("log/lib/emitter"),
-				require.resolve("log/lib/register-master"),
+				require.resolve("log/lib/abstract-writer"), require.resolve("log/lib/emitter"),
+				require.resolve("log/lib/get-master-writer"),
 				require.resolve("log/lib/setup-visibility"), require.resolve("../"),
 				require.resolve("../lib/writer")
 			],
